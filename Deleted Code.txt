@@ -1,0 +1,9 @@
+ <form id="form1" method="post" action="CS262.aspx">
+      <div class="aspNetHidden">
+          <input type="hidden" name="_VIEWSTATE" id="_VIEWSTATE"
+          value="dDw3NDg2NTI5MDg70z4..." />
+      </div>
+      <div class="aspNetHidden">
+          <input type="hidden" name="_EVENTVALIDATION" id="_EVENTVALIDATION"
+          value="/wEWAwLr3rr0BgLr797..." />
+      </div>
