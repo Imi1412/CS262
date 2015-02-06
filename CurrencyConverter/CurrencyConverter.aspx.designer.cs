@@ -40,6 +40,24 @@ namespace CurrencyConverter {
         protected global::System.Web.UI.HtmlControls.HtmlInputSubmit Convert;
         
         /// <summary>
+        /// ShowGraph control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputSubmit ShowGraph;
+        
+        /// <summary>
+        /// Graph control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage Graph;
+        
+        /// <summary>
         /// Result control.
         /// </summary>
         /// <remarks>

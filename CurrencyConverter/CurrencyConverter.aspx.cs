@@ -10,39 +10,47 @@ namespace CurrencyConverter
 {
     public partial class CurrencyConverter : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
+        {
+            if (this.IsPostBack == false)
+            {
+                Currency.Items.Add(new ListItem("Euro", "0.85"));
+                Currency.Items.Add(new ListItem("Japanese Yen", "110.33"));
+                Currency.Items.Add(new ListItem("Canadian Dollar", "1.2"));
+
+                Graph.Visible = false;
+            }
+        }
+
+        protected void Convert_ServerClick(object sender, EventArgs e)
         {
             decimal oldAmount;
             bool success = Decimal.TryParse(US.Value, out oldAmount);
             
-            if (this.IsPostBack == false)
+            if ((oldAmount <= 0) || (success == false))
             {
-                // The HtlSelect control accepts text or ListItem objects
-                Currency.Items.Add(new ListItem("Euro", "0.85"));
-                Currency.Items.Add(new ListItem("Japanese Yen", "110.33"));
-                Currency.Items.Add(new ListItem("Canadian Dollar", "1.2"));
+                Result.Style["color"] = "Red";
+                Result.InnerText = "Specify a positive number";
             }
-            
-            if (success)
+            else
             {
+                Result.Style["color"] = "Black";
+
                 ListItem item = Currency.Items[Currency.SelectedIndex];
 
                 decimal newAmount = oldAmount * Decimal.Parse(item.Value);
                 Result.InnerText = oldAmount.ToString() + " U.S. dollars = ";
                 Result.InnerText += newAmount.ToString() + " " + item.Text;
             }
-            else
-            {
-               
-                Result.InnerText = "The number you typed in was not in the correct format. Use only numbers.";
-            }
 
-            //decimal USAmount;
+            Graph.Src = "pic" + Currency.SelectedIndex.ToString() + ".png";
+        }
 
-            // Attempt the conversion.
-            //bool success = Decimal.TryParse(US.Value, out USAmount);
-
-            // Check if it succeeded.
+        protected void ShowGraph_ServerClick(Object sender, EventArgs e)
+        {
+            Graph.Src = "Pic" + Currency.SelectedIndex.ToString() + ".png";
+            Graph.Visible = true;
         }
     }
 }
